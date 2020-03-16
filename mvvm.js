@@ -19,6 +19,7 @@ class Watcher {
     update() {
         const newVal = compileUtil.getValue(this.expr, this.vm);
         if (newVal !== this.oldVal) {
+            //若在vue中，这个回调将调用render函数，会返回一个newVnode，进而调用patch(oldVnode,newVnode)函数来更新dom
             this.cb(newVal);
         }
     }
